@@ -2,23 +2,21 @@
 #include <math.h>
  
 // skaito konstantas
-void skaityti(int *arr, int *n, int *x) { //masyvas, polinomo laipsnis, kintamasis
-    printf("Iveskite polinomo laipsni: ");
-    scanf("%d", n);
+void skaityti(double *arr, int n, double *x) { //masyvas, polinomo laipsnis, kintamasis
 
-    for (int i = 0; i <= *n; i++) {
+    for (int i = 0; i <= n; i++) {
         printf("Iveskite %d-ojo nario konstanta: ", i + 1);
-        scanf("%d", &arr[i]);
+        scanf("%lf", &arr[i]);
     }
 
     printf("Iveskite kintamojo x reiksme: ");
-    scanf("%d", &(*x));
+    scanf("%lf", x);
 
 }
 
 // skaiciuoja polinomo suma
-int suma(int *arr, int n, int x) {
-    int sum = 0;
+double suma(double *arr, int n, double x) {
+    double sum = 0;
     for (int i = 0; i <= n; i++){
         sum += arr[n-i] * pow(x, i);
     }
@@ -27,14 +25,18 @@ int suma(int *arr, int n, int x) {
 
 int main() {
     int n;             // laipsnis
-    int arr[20];       // konstantos
-    int x, ats;
 
-    skaityti(arr, &n, &x);
+    printf("Iveskite polinomo laipsni: ");
+    scanf("%d", &n);
 
+    //sukuriamas dinaminis masyvas
+    double *arr = (double*)malloc(n* sizeof(int));
+    double x, ats;
+
+    skaityti(arr, n, &x);
     ats = suma(arr, n, x);
+    printf("Polinomo reiksme: %.4lf\n", ats);
 
-    printf("Polinomo reiksme: %d\n", ats);
-
+    free(arr);
     return 0;
 }
