@@ -1,5 +1,21 @@
+# Executables & libraries
 *.exe
 *.o
 *.a
 *.so
 *.dll
+*.dylib
+a.out
+main
+main-static
+main-dynamic
+
+# Generated files
+*.i
+*.s
+*.bin
+file1.bin
+file2.bin
+
+# IDE junk
+.vscode/
